@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С Днём Рождения, Рома!</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #6a3093 100%);
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+    overflow: hidden;
+    padding: 20px;
+  }
+  @keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: cardIn 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 2;
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .emoji {
+    font-size: 64px;
+    display: inline-block;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    color: #fff;
+    margin: 20px 0 10px;
+    text-shadow: 0 4px 20px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(90deg, #ffd700, #ff8c00, #ffd700);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+  }
+  @keyframes shine {
+    to { background-position: 200% center; }
+  }
+  .name {
+    font-size: clamp(40px, 9vw, 72px);
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.7), 0 0 60px rgba(255, 140, 0, 0.4);
+    margin-bottom: 25px;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+  .message {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(16px, 3vw, 20px);
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+  .wishes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .wish {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 15px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .wish:hover {
+    transform: translateY(-4px) scale(1.05);
+    background: rgba(255, 215, 0, 0.3);
+  }
+  .btn {
+    display: inline-block;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e3c72;
+    background: linear-gradient(90deg, #ffd700, #ffb300);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.65);
+  }
+  .btn:active { transform: translateY(0); }
+
+  /* Конфетти */
+  .confetti {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    opacity: 0.85;
+    z-index: 1;
+    animation: fall linear infinite;
+    pointer-events: none;
+  }
+  @keyframes fall {
+    to { transform: translateY(105vh) rotate(720deg); }
+  }
+
+  /* Свечи */
+  .cake {
+    font-size: 50px;
+    margin-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Конфетти генерируется скриптом -->
+<div id="confetti-container"></div>
+
+<div class="card">
+  <div class="emoji">🎂</div>
+  <h1>С Днём Рождения!</h1>
+  <div class="name">РОМА</div>
+  <p class="message">
+    Пусть каждый день приносит радость,<br>
+    мечты сбываются, а удача всегда будет рядом.<br>
+    Будь счастлив, здоров и полон энергии! 🚀
+  </p>
+  <div class="wishes">
+    <span class="wish">💪 Успехов</span>
+    <span class="wish">💰 Достатка</span>
+    <span class="wish">❤️ Любви</span>
+    <span class="wish">🎯 Целей</span>
+    <span class="wish">😄 Улыбок</span>
+  </div>
+  <button class="btn" onclick="celebrate()">🎉 Запустить салют!</button>
+</div>
+
+<script>
+  // Генерация конфетти
+  const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f7a072', '#ffffff', '#c44dff'];
+  const container = document.getElementById('confetti-container');
+
+  function createConfetti(count = 60) {
+    for (let i = 0; i < count; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      c.style.width = (6 + Math.random() * 8) + 'px';
+      c.style.height = (6 + Math.random() * 8) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      const duration = 3 + Math.random() * 4;
+      c.style.animationDuration = duration + 's';
+      c.style.animationDelay = Math.random() * 5 + 's';
+      container.appendChild(c);
+
+      // удаляем и пересоздаём для бесконечности
+      setTimeout(() => {
+        c.remove();
+        createConfetti(1);
+      }, (duration + 5) * 1000);
+    }
+  }
+
+  createConfetti(50);
+
+  // Салют по кнопке
+  function celebrate() {
+    createConfetti(150);
+    const btn = document.querySelector('.btn');
+    btn.textContent = '🎊 Ура, Рома! 🎊';
+    setTimeout(() => {
+      btn.textContent = '🎉 Запустить салют!';
+    }, 2500);
+  }
+</script>
+
+</body>
+</html>
